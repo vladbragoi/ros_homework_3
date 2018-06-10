@@ -2,31 +2,39 @@
 ##### Homework 3 [Laboratorio Ciberfisico] - University of Verona #####
 
 ### Descrizione
-
+L'homework 3 è composto da 4 parti:
+* Parte 1: installazione di ORB_SLAM2
+* Parte 2: esecuzione di ORB_SLAM2 su una rosbag registrata con un drone volante
+* Parte 3: creazione di una point-cloud 
+* Parte 4: clustering dei punti contenuti nella point-cloud generata al punto 3
 
 ### Istruzioni per l'installazione
-Clonare il seguente repository:
+Le parti 1, 2 e 3 sono tutte inglobate in questo repository. Tuttavia, occorre
+aver installato la libreria esterna `Pangolin` (si vedano le [istruzioni di 
+ORB_SLAM2](ORB_SLAM2/README.md) per maggiori informazioni).
+
 ```sh
-$ git clone https://github.com/vladbragoi/ros_homework_2.git
+$ git clone https://github.com/vladbragoi/ros_homework_3.git
 ```
-Posizionarsi nella directory ros_homework_2 e lanciare lo script "setup.sh" con il comando:
+Posizionarsi nella directory ros_homework_3 e lanciare lo script "run.sh" con il comando:
 ```sh
-$ ./setup.sh
+$ ./run.sh
 ```
-Eseguire le seguenti istruzioni:
+il quale provvederà a compilare i pacchetti necessari e lanciare i seguenti script (in ordine):
 ```sh
-$ export TURTLEBOT3_MODEL=waffle
-$ roslaunch turtlebot3_gazebo turtlebot3_cv2.launch
+$ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH :PATH/ros_homework3/ORB_SLAM2_mod/Examples/ROS
+$ roscore
+$ rosrun ORB_SLAM2 Stereo ORB_SLAM2/Vocabulary/ORBvoc.txt ORB_SLAM2/Examples/Stereo/EuRoC.yaml true
+$ rosbag play --pause PATH/V1_01_easy.bag /cam0/image_raw:=/camera/left/image_raw /cam1/image_raw:=/camera/right/image_raw
 ```
-Per la navigazione autonoma:
-```sh
-$ roslaunch turtlebot3_gazebo turtlebot3_simulation.launch
-```
+#### Nota:
+Questi comandi sono già inclusi nello script `run.sh`. Se necessario occorre modificare i path per avviare i vari script.
 
 ### Preview
 
-<img src="media/ca_vignal_2_world.png" width="800">
-<img src="media/ca_vignal_2_preview.png" width="800">
+<img src="img/nodes.png" width="800">
+<img src="img/orb_slam.png" width="800">
+<img src="img/pointcloud_clusterized.png" width="800">
 
 
 ### References ###
