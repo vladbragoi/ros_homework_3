@@ -1,9 +1,14 @@
 #!/bin/bash
+
+./clean.sh
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ros_homework3/ORB_SLAM2_mod/Examples/ROS
+./ORB_SLAM2/build.sh
+./ORB_SLAM2/build_ros.sh
 gnome-terminal -e 'roscore'
-sleep 2
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/catkin_ws/src/ros_homework_3/ORB_SLAM2/Examples/ROS
-gnome-terminal -e 'rosrun ~/catkin_ws/src/ORB_SLAM2 Stereo ~/catkin_ws/src/ros_homework_3/ORB_SLAM2/Vocabulary/ORBvoc.txt ~/catkin_ws/src/ros_homework_3/ORB_SLAM2/Examples/Stereo/EuRoC.yaml true'
+sleep 3
+gnome-terminal -e 'rosrun ORB_SLAM2 Stereo ORB_SLAM2/Vocabulary/ORBvoc.txt ORB_SLAM2/Examples/Stereo/EuRoC.yaml true'
 sleep 5
 rosbag play --pause ~/V1_01_easy.bag /cam0/image_raw:=/camera/left/image_raw /cam1/image_raw:=/camera/right/image_raw
 
-echo -e "Use Ctrl+C in the orb_slam terminal to exit program and save the point-cloud map,\nThen use pcl_viewer to view the map clusterized (pointcloud.pcd)"
+echo -e "Don't forget to Ctrl+C the orb_slam terminal to save the pointcloud generated map.
+Then you can clusterize it using ./bin/Cluster pointcloud.pcd command"

@@ -1,5 +1,9 @@
 rm -rf build
 
+rm FrameTrajectory_KITTI_Format.txt
+rm FrameTrajectory_TUM_Format.txt
+rm KeyFrameTrajectory_TUM_Format.txt
+
 rm -rf ORB_SLAM2/build
 rm -rf ORB_SLAM2/Examples/Monocular/mono_euroc
 rm -rf ORB_SLAM2/Examples/Monocular/mono_kitti
