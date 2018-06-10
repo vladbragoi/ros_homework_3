@@ -1,9 +1,5 @@
 #!/bin/bash
 
-./clean.sh
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ros_homework3/ORB_SLAM2_mod/Examples/ROS
-./ORB_SLAM2/build.sh
-./ORB_SLAM2/build_ros.sh
 gnome-terminal -e 'roscore'
 sleep 3
 gnome-terminal -e 'rosrun ORB_SLAM2 Stereo ORB_SLAM2/Vocabulary/ORBvoc.txt ORB_SLAM2/Examples/Stereo/EuRoC.yaml true'

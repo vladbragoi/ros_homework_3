@@ -9,31 +9,40 @@ L'homework 3 è composto da 4 parti:
 * Parte 4: clustering dei punti contenuti nella point-cloud generata al punto 3
 
 ### Istruzioni per l'installazione
-Le parti 1, 2 e 3 sono tutte inglobate in questo repository. Tuttavia, occorre
-aver installato la libreria esterna `Pangolin` (si vedano le [istruzioni di 
+Le parti 1, 2 e 3 sono tutte inglobate in questo repository, tuttavia occorre aver installato la libreria esterna `Pangolin` (si vedano le [istruzioni di 
 ORB_SLAM2](ORB_SLAM2/README.md) per maggiori informazioni).
 
 ```sh
 $ git clone https://github.com/vladbragoi/ros_homework_3.git
 ```
-Posizionarsi nella directory ros_homework_3 e lanciare lo script "run.sh" con il comando:
+Posizionarsi nella directory ros_homework_3 e lanciare lo script "build_all.sh" con il comando:
+```sh
+$ ./build_all.sh
+```
+il quale provvederà a compilare tutti i pacchetti necessari.
+Successivamente lanciare lo script `run.sh`
 ```sh
 $ ./run.sh
 ```
-il quale provvederà a compilare i pacchetti necessari e lanciare i seguenti script (in ordine):
-```sh
-$ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH :PATH/ros_homework3/ORB_SLAM2_mod/Examples/ROS
-$ roscore
-$ rosrun ORB_SLAM2 Stereo ORB_SLAM2/Vocabulary/ORBvoc.txt ORB_SLAM2/Examples/Stereo/EuRoC.yaml true
-$ rosbag play --pause PATH/V1_01_easy.bag /cam0/image_raw:=/camera/left/image_raw /cam1/image_raw:=/camera/right/image_raw
-```
 #### Nota:
-Questi comandi sono già inclusi nello script `run.sh`. Se necessario occorre modificare i path per avviare i vari script.
+Se necessario, modificare i path all'interno di run.sh per avviare in maniera corretta i vari script.
 
 ### Preview
-
+Una volta che le finestre Map Viewer e Current Frame saranno visibili, lanciare l'esecuzione della bag inserendo uno spazio (premere la space-bar) nel terminale in cui è stata lanciata (terminale in basso a destra nella figura).
 <img src="img/nodes.png" width="800">
+Successivamente occorre attendere che la bag venga eseguita fino alla fine, dopodiché usare la combinazione di tasti `Ctrl+C` per chiudere lo script orb_slam (terminale a destra nella figura) e permettere al software di salvare la mappa creata.
 <img src="img/orb_slam.png" width="800">
+
+Infine, per visualizzare la point-cloud, posizionandovi nella directory `ros_homework_3`, lanciare il seguente comando:
+```sh
+$ ./bin/Cluster pointcloud.pcd
+```
+Oppure
+```sh
+$ pcl_viewer pointcloud.pcd
+```
+per visualizzare la mappa senza clustering.
+
 <img src="img/pointcloud_clusterized.png" width="800">
 
 
@@ -41,17 +50,11 @@ Questi comandi sono già inclusi nello script `run.sh`. Se necessario occorre mo
 
 * [Course page (prof. Bloisi - Univr)](profs.scienze.univr.it/~bloisi/corsi/ciberfisico.html)
 
-* [Gazebo: building a world](http://gazebosim.org/tutorials?tut=build_world)
+* [Lezione 13: Point Cloud Library](http://profs.scienze.univr.it/~bloisi/corsi/ciberfisico.html#diario)
 
-* [Gazebo: using roslaunch](http://gazebosim.org/tutorials?tut=ros_roslaunch)
+* [ROS: PCL](http://wiki.ros.org/pcl_ros)
 
-* [Gazebo: import meshes](http://gazebosim.org/tutorials?tut=import_mesh)
-
-* [ROS: create your own world](http://wiki.ros.org/cob_gazebo_worlds/Tutorials/Create%20your%20own%20world)
-
-* [Cyberlab world](https://github.com/dbloisi/cyber_lab_gazebo)
-
-* [Youtube video](media/turtlebot3_preview.png)
+* [ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2)
 
 
 ### Author ###

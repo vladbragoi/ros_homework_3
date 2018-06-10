@@ -1,3 +1,4 @@
+// Old version: Map saver in txt files
 #include <iostream>
 #include <pcl/ModelCoefficients.h>
 #include <pcl/point_types.h>

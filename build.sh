@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Clustering ..."
 
 mkdir build

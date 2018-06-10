@@ -1,3 +1,4 @@
+#!/bin/bash
 rm -rf build
 
 rm FrameTrajectory_KITTI_Format.txt
