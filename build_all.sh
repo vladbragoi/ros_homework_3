@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "Building ..."
 
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ros_homework3/ORB_SLAM2_mod/Examples/ROS
+PATH=`find ~ -name ros_homework_3`
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:"$PATH"/ORB_SLAM/Examples/ROS
 
 ./clean.sh
 ./build.sh

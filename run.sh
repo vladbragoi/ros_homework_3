@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=`find ~ -name ros_homework_3`
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:"$PATH"/ORB_SLAM/Examples/ROS
 gnome-terminal -e 'roscore'
 sleep 3
 gnome-terminal -e 'rosrun ORB_SLAM2 Stereo ORB_SLAM2/Vocabulary/ORBvoc.txt ORB_SLAM2/Examples/Stereo/EuRoC.yaml true'
